@@ -7,7 +7,7 @@
 
 | id | Item | Owner | Status | Notes |
 |----|------|-------|--------|-------|
-| M2 | **Seat Grok in collab-mem** — add to ROSTER, agree the Rae/Grok ownership split + read/write protocol | Rae | active | v2 rebuild done; Grok seat + protocol still to finalise. |
+| M2 | **Seat Grok in collab-mem** — add to ROSTER, agree the Rae/Grok ownership split + read/write protocol | Rae | done → drops to LOG | Grokbot is now the cloud-facing A2A client; Rae is KSM. Protocol locked in CARD-CONTRACT v3. |
 | M3 | **ChadAI Step 4 — data sources + channel** — legislation.gov.uk API + Scrapling MCP + NotebookLM MCP + FB frame; answer-only-from-notebook | Rae | **blocked on Tony** | Plan/flow are in the external ChadAI repository; see `projects/chadai.md` before resuming. **5 decisions await Tony** (see 2026-05-31 daily). Also fixes the X-SAR ungrounded-citation gap. |
 | M4 | **ChadAI Step 5 — full hold-nothing purge** — wipe `state.db` rows + `sessions/` + `pairing/` + uploads + email address at session end; server-side, guaranteed | Rae | backlog | The spec is in the external ChadAI repository; do not assume the former VPS path is live. |
 | M5 | **Wire collab-mem ↔ ChadAI/HANDOFF.md** — one canonical entry point, no drift | Rae | backlog | Deep cursor and current runtime boundary are recorded in `projects/chadai.md`; former host paths are historical until Tony reopens the project. |
@@ -25,11 +25,19 @@
 | M17 | **`chadai` repo triage** — Tony imported "The AI Guy" (Nate's Substack curation: 39 prompts + Adversarial Assistant / Workflow Architect / Content Engine kit) into a new private repo 2026-06-05 23:06 UTC. Decide: stash-only, feed into Chad v6 prompt when M3 reopens, or stand up as standalone product | Tony | needs-decision | Three-option question is on 2026-06-06 daily. Rae assumes stash-only until told otherwise. |
 | M18 | **Ask Ebbi UAT — the Planning Oracle** — Hermes-native Ask Ebbi product, Library MCP and active private UAT. Card: `projects/ask-ebbi-uat.md` | Tony + Rae | **active UAT** | Private `k3ss-official/ask-ebbi-uat/main` is reconciled byte-for-byte with tracked source on `alwyzon-1`; snapshot `1c3d257`. Container `ebbi` remains healthy behind Cloudflare Access. Continue Tony/Rae UAT. |
 | M19 | **Historical two-tenant VPS placement** — ChadAI and Ask Ebbi as peer Docker projects | Tony | **done / superseded** | The July ChadAI+Ask Ebbi plan remains superseded. Current state is different: KSM is host-native systemd and Ask Ebbi alone uses Docker for private UAT; ChadAI is absent. |
-| M20 | **Kanban Surface Manager — Hermes-native execution surface over collab-mem** — dedicated Hermes Agent is KSM; native Kanban is the board/dispatcher; collab-mem remains project truth. Card: `projects/kanban-surface.md` | Codex | **active** | Live browser source/receipt view and selected Intake → Build dispatch verified; native handoffs, permanent `next-N` IDs and manual-only admission fixed in PRs #4–#7; concurrency one, auto-decompose off. KSM remains host-native and isolated while the Ask Ebbi UAT container coexists on the host. Next = one Tony-watched UI drag. |
+| M20 | **Kanban Surface Manager — A2A checkout + card directive over collab-mem** — Rae (M4 Hermes) is KSM; workers check out cards directly over A2A; the card directive (comment + legal-move dropdown + scoped @mentions, one send) replaces free-text comments; Janet audits async. Card: `projects/kanban-surface.md` | Rae | **active** | Repo corrected to `anwhelan01/kanban-surface`. PRs #2 (MVP directive) and #3 (v2 chat backlog) open. Next = Brett reconfigures Rae per the specs; Grokbot connects as A2A client. |
+| M21 | **Card directive MVP** — ship the comment box + legal-move dropdown + scoped @mentions on kanban-surface (PR #2) | Brett | active | Replaces free-text comments. One send = post + move. Rae woken only by @mention. |
+| M22 | **Card chat surface v2** — real-time per-card threads, @everyone, live updates, full-screen view (PR #3, lands after #2) | Brett | backlog | Parked until the directive MVP proves the flow. |
+| M23 | **Janet monthly digest** — async summary of board state for Brett; emergencies ping directly | Janet | active | No firehose. Brett reads on his own schedule. |
 
 > **2026-08-05 supersession:** M19 records a completed historical topology, not
 > current host state. `alwyzon-1` now runs host-native KSM plus one isolated Ask
 > Ebbi Docker UAT workload; ChadAI remains absent. See FACTS, M18 and M20.
+>
+> **2026-09-06 refactor:** M20 rewritten for the A2A checkout + card-directive
+> model. Rae is KSM (not Codex); Janet is the isolated guardian; Brett is the
+> outside-Hermes orchestrator; Grokbot is the cloud-facing A2A client. Repo
+> identity corrected to `anwhelan01/kanban-surface`.
 
 ## ChadAI build roadmap
 1. Hermes install — ✅ done
